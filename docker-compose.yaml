@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  # -------------------- CanvasBoard APIs Express Container -------------------- #
+
+  backend-apis:
+    image: "backend-apis"
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: backend-apis
+    environment:
+      PORT: 3000
+    ports:
+      - "3000:3000"
+    networks:
+      - docker_net
+    restart: unless-stopped
+
+networks:
+  docker_net:
+    driver: bridge
